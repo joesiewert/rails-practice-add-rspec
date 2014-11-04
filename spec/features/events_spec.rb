@@ -50,8 +50,10 @@ feature "Events" do
       description: "Dumb event",
       capacity: 45
     )
-    visit root_path
-    
-  end
 
+    visit root_path
+    expect(page).to have_content("Dumb event")
+    click_link "delete"
+    expect(page).to have_no_content("Dumb event")
+  end
 end
